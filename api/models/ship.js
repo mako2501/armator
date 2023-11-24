@@ -5,8 +5,12 @@ const mongoose = require("mongoose");
 const shipSchema = mongoose.Schema({
     name:String,
     flag:String,
-    mmsi:String
+    mmsi:String,
+    inPort:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Port"
+    }
 });
 
-//exportuje model na podstawie schematu model Book, 
+//exportuje model na podstawie schematu model, 
 module.exports = mongoose.model("Ship",shipSchema);

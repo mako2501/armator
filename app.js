@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 
 //IMPORTUJE ZMIENNE SRODOWISKOWE
-require('dotenv').config();
+require('dotenv').config(); 
 
 //łącze z baza danych
 const mongoose = require("mongoose");
@@ -21,10 +21,12 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 // routy
-/*const bookRoutes = require('./api/routes/books');
-app.use('/books', bookRoutes);*/
 const shipsRoutes = require('./api/routes/ships.js');
 app.use('/ships', shipsRoutes);
+const portsRoutes = require('./api/routes/ports.js');
+app.use('/ports', portsRoutes);
+const usersRoutes = require('./api/routes/users.js');
+app.use('/users', usersRoutes);
 
 app.use((req, res, next) => {
   res.status(404).json({ wiadomosc: 'Nie znaleziono ' });
